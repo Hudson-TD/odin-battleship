@@ -44,3 +44,20 @@ test("Ship factory returns Patrol Boat object with properties name (string), len
     sunk: false,
   });
 });
+
+test("Ship hit method increments hit count by 1", () => {
+  let PB = ship("Patrol Boat");
+  expect(PB).toStrictEqual({
+    name: "Patrol Boat",
+    length: 2,
+    hits: 0,
+    sunk: false,
+  });
+
+  expect(PB.hit()).toStrictEqual({
+    name: "Patrol Boat",
+    length: 2,
+    hits: 1,
+    sunk: false,
+  });
+});
