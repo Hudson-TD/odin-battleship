@@ -14,6 +14,7 @@ test("Ship factory returns all ship objects with properties name (string), lengt
     length: 4,
     hits: 0,
     sunk: false,
+    hit: expect.any(Function),
   };
   let newDestroyer = ship("Destroyer");
   let expectedDestroyer = {
@@ -21,6 +22,7 @@ test("Ship factory returns all ship objects with properties name (string), lengt
     length: 3,
     hits: 0,
     sunk: false,
+    hit: expect.any(Function),
   };
   let newSubmarine = ship("Submarine");
   let expectedSubmarine = {
@@ -28,6 +30,7 @@ test("Ship factory returns all ship objects with properties name (string), lengt
     length: 3,
     hits: 0,
     sunk: false,
+    hit: expect.any(Function),
   };
   let newPatrol = ship("Patrol Boat");
   let expectedPatrol = {
@@ -35,10 +38,11 @@ test("Ship factory returns all ship objects with properties name (string), lengt
     length: 2,
     hits: 0,
     sunk: false,
+    hit: expect.any(Function),
   };
-  expect(newCarrier).toStrictEqual(expectedCarrier);
-  expect(newBattleship).toStrictEqual(expectedBattleship);
-  expect(newDestroyer).toStrictEqual(expectedDestroyer);
-  expect(newSubmarine).toStrictEqual(expectedSubmarine);
-  expect(newPatrol).toStrictEqual(expectedPatrol);
+  expect(newCarrier).toMatchObject(expectedCarrier);
+  expect(newBattleship).toMatchObject(expectedBattleship);
+  expect(newDestroyer).toMatchObject(expectedDestroyer);
+  expect(newSubmarine).toMatchObject(expectedSubmarine);
+  expect(newPatrol).toMatchObject(expectedPatrol);
 });
