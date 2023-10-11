@@ -1,51 +1,33 @@
 const ship = (type) => {
-  switch (type) {
-    case "Carrier":
-      return {
-        name: type,
-        length: 5,
-        hits: 0,
-        sunk: false,
-      };
-      break;
-    case "Battleship":
-      return {
-        name: type,
-        length: 4,
-        hits: 0,
-        sunk: false,
-      };
-      break;
-    case "Destroyer":
-      return {
-        name: type,
-        length: 3,
-        hits: 0,
-        sunk: false,
-      };
-      break;
-    case "Submarine":
-      return {
-        name: type,
-        length: 3,
-        hits: 0,
-        sunk: false,
-      };
-      break;
-    case "Patrol Boat":
-      return {
-        name: type,
-        length: 2,
-        hits: 0,
-        sunk: false,
-      };
-      break;
+  let length = (type) => {
+    switch (type) {
+      case "Carrier":
+        return 5;
+        break;
+      case "Battleship":
+        return 4;
+        break;
+      case "Destroyer":
+        return 3;
+        break;
+      case "Submarine":
+        return 3;
+        break;
+      case "Patrol Boat":
+        return 2;
+        break;
+      default:
+        throw new Error("Invalid ship type provided");
+        break;
+    }
+  };
 
-    default:
-      throw new Error(
-        "Please enter one of the following ship types: Carrier, Battleship, Destroyer, Submarine, or Patrol Boat"
-      );
-  }
+  return {
+    name: type,
+    length: length(type),
+    hits: 0,
+    sunk: false,
+  };
 };
 
 module.exports = { ship };
