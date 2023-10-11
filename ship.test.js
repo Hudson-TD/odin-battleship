@@ -15,6 +15,7 @@ test("Ship factory returns all ship objects with properties name (string), lengt
     hits: 0,
     sunk: false,
     hit: expect.any(Function),
+    isSunk: expect.any(Function),
   };
   let newDestroyer = ship("Destroyer");
   let expectedDestroyer = {
@@ -23,6 +24,7 @@ test("Ship factory returns all ship objects with properties name (string), lengt
     hits: 0,
     sunk: false,
     hit: expect.any(Function),
+    isSunk: expect.any(Function),
   };
   let newSubmarine = ship("Submarine");
   let expectedSubmarine = {
@@ -31,6 +33,7 @@ test("Ship factory returns all ship objects with properties name (string), lengt
     hits: 0,
     sunk: false,
     hit: expect.any(Function),
+    isSunk: expect.any(Function),
   };
   let newPatrol = ship("Patrol Boat");
   let expectedPatrol = {
@@ -39,6 +42,7 @@ test("Ship factory returns all ship objects with properties name (string), lengt
     hits: 0,
     sunk: false,
     hit: expect.any(Function),
+    isSunk: expect.any(Function),
   };
   expect(newCarrier).toMatchObject(expectedCarrier);
   expect(newBattleship).toMatchObject(expectedBattleship);
@@ -56,6 +60,7 @@ test("Ship hit method increments obj.hits by 1 on each invocation", () => {
     hits: 1,
     sunk: false,
     hit: expect.any(Function),
+    isSunk: expect.any(Function),
   };
   expect(newShip).toMatchObject(expectedHitsOne);
   newShip.hit();
@@ -66,6 +71,7 @@ test("Ship hit method increments obj.hits by 1 on each invocation", () => {
     hits: 3,
     sunk: false,
     hit: expect.any(Function),
+    isSunk: expect.any(Function),
   };
   expect(newShip).toMatchObject(expectedHitsThree);
 });
