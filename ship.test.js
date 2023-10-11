@@ -46,3 +46,26 @@ test("Ship factory returns all ship objects with properties name (string), lengt
   expect(newSubmarine).toMatchObject(expectedSubmarine);
   expect(newPatrol).toMatchObject(expectedPatrol);
 });
+
+test("Ship hit method increments obj.hits by 1 on each invocation", () => {
+  let newShip = ship("Battleship");
+  newShip.hit();
+  let expectedHitsOne = {
+    name: "Battleship",
+    length: 4,
+    hits: 1,
+    sunk: false,
+    hit: expect.any(Function),
+  };
+  expect(newShip).toMatchObject(expectedHitsOne);
+  newShip.hit();
+  newShip.hit();
+  let expectedHitsThree = {
+    name: "Battleship",
+    length: 4,
+    hits: 3,
+    sunk: false,
+    hit: expect.any(Function),
+  };
+  expect(newShip).toMatchObject(expectedHitsThree);
+});

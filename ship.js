@@ -27,6 +27,9 @@ const ship = (type) => {
     length: length(type),
     hits: 0,
     sunk: false,
+    hit() {
+      this.hits += 1;
+    },
   };
 };
 
