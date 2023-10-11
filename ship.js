@@ -1,5 +1,5 @@
 const ship = (type) => {
-  let length = (type) => {
+  const length = (type) => {
     switch (type) {
       case "Carrier":
         return 5;
@@ -29,5 +29,8 @@ const ship = (type) => {
     sunk: false,
   };
 };
+
+let newShip = ship("Carrier");
+console.log(newShip);
 
 module.exports = { ship };
