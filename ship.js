@@ -30,6 +30,11 @@ const ship = (type) => {
     hit() {
       this.hits += 1;
     },
+    isSunk() {
+      if (this.hits === this.length) {
+        this.sunk = true;
+      }
+    },
   };
 };
 
