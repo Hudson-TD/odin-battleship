@@ -3,18 +3,17 @@ const gameboard = () => {
   let yAxis = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
   const generateGrid = (x, y) => {
-    let grid = [];
+    let gridArr = [];
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
-        grid.push(`${x[i]}${y[j]}`);
+        gridArr.push(`${x[i]}${y[j]}`);
       }
     }
-    return grid;
+    return gridArr;
   };
 
   return {
-    playerBoard: generateGrid(xAxis, yAxis),
-    enemyBoard: generateGrid(xAxis, yAxis),
+    grid: generateGrid(xAxis, yAxis),
   };
 };
 
