@@ -75,3 +75,14 @@ test("Ship hit method increments obj.hits by 1 on each invocation", () => {
   };
   expect(newShip).toMatchObject(expectedHitsThree);
 });
+
+test("Ship status updates from false to true when hits === length", () => {
+  let newShip = ship("Submarine");
+  expect(newShip.sunk).toBe(false);
+  newShip.hit();
+  expect(newShip.sunk).toBe(false);
+  newShip.hit();
+  expect(newShip.sunk).toBe(false);
+  newShip.hit();
+  expect(newShip.sunk).toBe(true);
+});
