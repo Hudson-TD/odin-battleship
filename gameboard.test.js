@@ -45,3 +45,21 @@ test("Invocation of receiveAttack method on non-occupied grid tile results in ob
     { x: 9, y: 9 },
   ]);
 });
+
+test("Invocation of ship in gameboard results in grid updating shipName property on appropriate objects", () => {
+  let exampleBoard = gameboard();
+  let carrierCounter = 0;
+  let submarineCounter = 0;
+  exampleBoard.generateShip("Carrier");
+
+  exampleBoard.forEach((obj) => {
+    if (obj.shipName === "Carrier") {
+      carrierCounter++;
+    } else if (obj.shipName === "Submarine") {
+      submarineCounter++;
+    }
+  });
+
+  expect(carrierCounter).toStrictEqual(5);
+  expect(submarineCounter).toStrictEqual(3);
+});
