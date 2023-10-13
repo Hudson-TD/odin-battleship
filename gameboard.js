@@ -14,9 +14,14 @@ const gameboard = () => {
 
   return {
     grid: generateGrid(),
-    receiveAttack(coordinate) {
-      let target = coordinate - 1;
-      this.grid[target].attacked = true;
+    missedShots: [],
+    receiveAttack(gridEl) {
+      let targetCoord = gridEl - 1;
+      let hitTile = this.grid[targetCoord];
+      hitTile.attacked = true;
+      if (hitTile.shipName === undefined) {
+        this.missedShots.push(hitTile.coordinate);
+      }
     },
   };
 };
