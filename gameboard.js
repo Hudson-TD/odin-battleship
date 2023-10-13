@@ -3,14 +3,6 @@ const { ship } = require("./ship");
 const gameboard = () => {
   let gridArr = [];
 
-  let fleet = [
-    "Carrier",
-    "Battleship",
-    "Destroyer",
-    "Submarine",
-    "Patrol Boat",
-  ];
-
   const generateGrid = () => {
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
@@ -22,6 +14,7 @@ const gameboard = () => {
         });
       }
     }
+
     return gridArr;
   };
 
@@ -29,6 +22,13 @@ const gameboard = () => {
     grid: generateGrid(),
     missedShots: [],
     sunkShips: [],
+    myFleet: [
+      ship("Carrier"),
+      ship("Battleship"),
+      ship("Destroyer"),
+      ship("Submarine"),
+      ship("Patrol Boat"),
+    ],
     receiveAttack(xCoord, yCoord) {
       this.grid.forEach((obj) => {
         if (obj.x === xCoord && obj.y === yCoord) {
@@ -41,11 +41,24 @@ const gameboard = () => {
         }
       });
     },
+    plotFleet() {
+      let fleet = this.myFleet;
+      fleet.forEach((ship) => {
+        let plots = ship.location;
+        plots.forEach((coord) => {
+          this.grid.forEach((obj) => {
+            if (obj.x === coord.x && obj.y === coord.y) {
+              obj.shipName = ship.name;
+            }
+          });
+        });
+      });
+    },
   };
 };
 
 module.exports = { gameboard };
 
 let test = gameboard();
-test.receiveAttack(0, 5);
+test.plotFleet();
 console.log(test);

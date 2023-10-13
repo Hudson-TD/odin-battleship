@@ -49,17 +49,29 @@ test("Invocation of receiveAttack method on non-occupied grid tile results in ob
 test("Invocation of ship in gameboard results in grid updating shipName property on appropriate objects", () => {
   let exampleBoard = gameboard();
   let carrierCounter = 0;
+  let battleshipCounter = 0;
+  let destroyerCounter = 0;
   let submarineCounter = 0;
-  exampleBoard.generateShip("Carrier");
+  let patrolCounter = 0;
+  exampleBoard.plotFleet();
 
-  exampleBoard.forEach((obj) => {
+  exampleBoard.grid.forEach((obj) => {
     if (obj.shipName === "Carrier") {
       carrierCounter++;
+    } else if (obj.shipName === "Battleship") {
+      battleshipCounter++;
+    } else if (obj.shipName === "Destroyer") {
+      destroyerCounter++;
     } else if (obj.shipName === "Submarine") {
       submarineCounter++;
+    } else if (obj.shipName === "Patrol Boat") {
+      patrolCounter++;
     }
   });
 
   expect(carrierCounter).toStrictEqual(5);
+  expect(battleshipCounter).toStrictEqual(4);
+  expect(destroyerCounter).toStrictEqual(3);
   expect(submarineCounter).toStrictEqual(3);
+  expect(patrolCounter).toStrictEqual(2);
 });

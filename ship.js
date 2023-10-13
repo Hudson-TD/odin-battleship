@@ -31,26 +31,20 @@ const ship = (type) => {
   const generateCoordinates = (path, length, start) => {
     let list = [];
     list.push(start);
-    console.log(path);
-    console.log(length);
 
     if (path == "left") {
-      console.log("going left");
       for (let i = 1; i < length; i++) {
         list.push({ x: start.x - i, y: start.y });
       }
     } else if (path == "right") {
-      console.log("going right");
       for (let i = 1; i < length; i++) {
         list.push({ x: start.x + i, y: start.y });
       }
     } else if (path == "up") {
-      console.log("going up");
       for (let i = 1; i < length; i++) {
         list.push({ x: start.x, y: start.y - i });
       }
     } else if (path == "down") {
-      console.log("going down");
       for (let i = 1; i < length; i++) {
         list.push({ x: start.x, y: start.y + i });
       }
@@ -59,6 +53,7 @@ const ship = (type) => {
   };
 
   const randomPlacement = (shipLength) => {
+    let shipCoordinates = [];
     let startingPoint = {
       x: randomNumZeroToNine(),
       y: randomNumZeroToNine(),
@@ -68,7 +63,7 @@ const ship = (type) => {
 
     let path = determineSafePath(direction, startingPoint);
 
-    let shipCoordinates = generateCoordinates(path, shipLength, startingPoint);
+    shipCoordinates = generateCoordinates(path, shipLength, startingPoint);
 
     return shipCoordinates;
   };
@@ -90,8 +85,5 @@ const ship = (type) => {
     },
   };
 };
-
-let newShip = ship("Carrier");
-console.log(newShip);
 
 module.exports = { ship };
