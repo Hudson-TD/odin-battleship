@@ -3,11 +3,13 @@ const { ship } = require("./ship");
 const gameboard = () => {
   let gridArr = [];
 
-  let carrier = ship("Carrier");
-  let battleship = ship("Battleship");
-  let destroyer = ship("Destroyer");
-  let submarine = ship("Submarine");
-  let patrol = ship("Patrol Boat");
+  let fleet = [
+    "Carrier",
+    "Battleship",
+    "Destroyer",
+    "Submarine",
+    "Patrol Boat",
+  ];
 
   const generateGrid = () => {
     for (let i = 0; i < 10; i++) {
