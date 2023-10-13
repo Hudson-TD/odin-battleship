@@ -2,7 +2,7 @@ const randomNumZeroToNine = () => {
   return Math.floor(Math.random() * 10);
 };
 
-const randomDirection = (start) => {
+const randomDirection = () => {
   let direction;
   let coinFlip = randomNumZeroToNine();
 
@@ -15,6 +15,23 @@ const randomDirection = (start) => {
   return direction;
 };
 
-const determineSafeSpace = () => {};
+const determineSafePath = (direction, start) => {
+  let path;
 
-module.exports = { randomNumZeroToNine, randomDirection };
+  if (direction === "horizontal") {
+    if (start.x <= 4) {
+      path = "right";
+    } else {
+      path = "left";
+    }
+  } else if (direction === "vertical") {
+    if (start.y <= 4) {
+      path = "down";
+    } else {
+      path = "up";
+    }
+  }
+  return path;
+};
+
+module.exports = { randomNumZeroToNine, randomDirection, determineSafePath };
