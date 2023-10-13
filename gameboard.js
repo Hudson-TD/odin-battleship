@@ -14,6 +14,10 @@ const gameboard = () => {
 
   return {
     grid: generateGrid(),
+    receiveAttack(coordinate) {
+      let target = coordinate - 1;
+      this.grid[target].attacked = true;
+    },
   };
 };
 
