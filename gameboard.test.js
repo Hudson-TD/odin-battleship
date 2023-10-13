@@ -18,8 +18,14 @@ test("Test random grid obj to match expected format", () => {
   expect(exampleBoard.grid[randomGridEl]).toMatchObject(expectedResult);
 });
 
-test("receiveAttack() method invoked results in grid[x].attacked === true", () => {
+test("receiveAttack method invoked results in grid[x].attacked === true", () => {
   let exampleBoard = gameboard();
   exampleBoard.receiveAttack(5);
   expect(exampleBoard.grid[4].attacked).toEqual(true);
+});
+
+test("Invocation of receiveAttack method on non-occupied grid tile results in object being added to missedShots array", () => {
+  let exampleBoard = gameboard();
+  exampleBoard.receiveAttack(100);
+  expect(exampleBoard.missedShots).toStrictEqual([100]);
 });
