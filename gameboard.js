@@ -58,7 +58,3 @@ const gameboard = () => {
 };
 
 module.exports = { gameboard };
-
-let test = gameboard();
-test.plotFleet();
-console.log(test);
