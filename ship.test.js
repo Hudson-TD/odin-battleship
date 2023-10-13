@@ -86,3 +86,16 @@ test("Ship status updates from false to true when hits === length", () => {
   newShip.hit();
   expect(newShip.sunk).toBe(true);
 });
+
+test.only("Return array of objects with x/y coordinates matching ship length", () => {
+  let newShip = ship("Carrier");
+  expect(newShip.length).toBe(5);
+
+  expect(newShip.randomPlacement()).toEqual([
+    { x: expect.any(Number), y: expect.any(Number) },
+    { x: expect.any(Number), y: expect.any(Number) },
+    { x: expect.any(Number), y: expect.any(Number) },
+    { x: expect.any(Number), y: expect.any(Number) },
+    { x: expect.any(Number), y: expect.any(Number) },
+  ]);
+});
