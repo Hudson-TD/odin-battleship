@@ -1,3 +1,5 @@
+const { ship } = require("./ship");
+
 const gameboard = () => {
   let gridArr = [];
 
@@ -21,6 +23,8 @@ const gameboard = () => {
       hitTile.attacked = true;
       if (hitTile.shipName === undefined) {
         this.missedShots.push(hitTile.coordinate);
+      } else {
+        console.log(`${hitTile.shipName} was hit`);
       }
     },
   };
