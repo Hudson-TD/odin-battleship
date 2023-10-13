@@ -28,4 +28,10 @@ test("Invocation of receiveAttack method on non-occupied grid tile results in ob
   let exampleBoard = gameboard();
   exampleBoard.receiveAttack(100);
   expect(exampleBoard.missedShots).toStrictEqual([100]);
+  exampleBoard.receiveAttack(5);
+  expect(exampleBoard.missedShots).toStrictEqual([100, 5]);
+  exampleBoard.receiveAttack(22);
+  expect(exampleBoard.missedShots).toStrictEqual([100, 5, 22]);
+  exampleBoard.receiveAttack(76);
+  expect(exampleBoard.missedShots).toStrictEqual([100, 5, 22, 76]);
 });
