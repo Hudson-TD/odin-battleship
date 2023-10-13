@@ -10,7 +10,8 @@ test("Test random grid obj to match expected format", () => {
   let exampleBoard = gameboard();
   let randomGridEl = Math.floor(Math.random() * (100 - 1 + 1) + 1);
   let expectedResult = {
-    coordinate: expect.any(Number),
+    x: expect.any(Number),
+    y: expect.any(Number),
     shipName: undefined,
     attacked: false,
   };
@@ -20,18 +21,27 @@ test("Test random grid obj to match expected format", () => {
 
 test("receiveAttack method invoked results in grid[x].attacked === true", () => {
   let exampleBoard = gameboard();
-  exampleBoard.receiveAttack(5);
-  expect(exampleBoard.grid[4].attacked).toEqual(true);
+  exampleBoard.receiveAttack(2, 4);
+  exampleBoard.grid.forEach((obj) => {
+    if (obj.x === 2 && obj.y === 4) {
+      expect(obj.attacked === true);
+    }
+  });
 });
 
 test("Invocation of receiveAttack method on non-occupied grid tile results in object being added to missedShots array", () => {
   let exampleBoard = gameboard();
-  exampleBoard.receiveAttack(100);
-  expect(exampleBoard.missedShots).toStrictEqual([100]);
-  exampleBoard.receiveAttack(5);
-  expect(exampleBoard.missedShots).toStrictEqual([100, 5]);
-  exampleBoard.receiveAttack(22);
-  expect(exampleBoard.missedShots).toStrictEqual([100, 5, 22]);
-  exampleBoard.receiveAttack(76);
-  expect(exampleBoard.missedShots).toStrictEqual([100, 5, 22, 76]);
+  exampleBoard.receiveAttack(0, 5);
+  expect(exampleBoard.missedShots).toStrictEqual([{ x: 0, y: 5 }]);
+  exampleBoard.receiveAttack(2, 7);
+  expect(exampleBoard.missedShots).toStrictEqual([
+    { x: 0, y: 5 },
+    { x: 2, y: 7 },
+  ]);
+  exampleBoard.receiveAttack(9, 9);
+  expect(exampleBoard.missedShots).toStrictEqual([
+    { x: 0, y: 5 },
+    { x: 2, y: 7 },
+    { x: 9, y: 9 },
+  ]);
 });
