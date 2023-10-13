@@ -17,3 +17,9 @@ test("Test random grid obj to match expected format", () => {
 
   expect(exampleBoard.grid[randomGridEl]).toMatchObject(expectedResult);
 });
+
+test("receiveAttack() method invoked results in grid[x].attacked === true", () => {
+  let exampleBoard = gameboard();
+  exampleBoard.receiveAttack(5);
+  expect(exampleBoard.grid[4].attacked).toEqual(true);
+});
