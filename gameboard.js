@@ -10,12 +10,15 @@ const gameboard = () => {
   let patrol = ship("Patrol Boat");
 
   const generateGrid = () => {
-    for (let i = 1; i <= 100; i++) {
-      gridArr.push({
-        coordinate: i,
-        shipName: undefined,
-        attacked: false,
-      });
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        gridArr.push({
+          x: i,
+          y: j,
+          shipName: undefined,
+          attacked: false,
+        });
+      }
     }
     return gridArr;
   };
@@ -24,19 +27,23 @@ const gameboard = () => {
     grid: generateGrid(),
     missedShots: [],
     sunkShips: [],
-    receiveAttack(gridEl) {
-      let targetCoord = gridEl - 1;
-      let hitTile = this.grid[targetCoord];
-      hitTile.attacked = true;
-      if (hitTile.shipName === undefined) {
-        this.missedShots.push(hitTile.coordinate);
-      } else {
-        console.log(`${hitTile.shipName} was hit`);
-      }
+    receiveAttack(xCoord, yCoord) {
+      this.grid.forEach((obj) => {
+        if (obj.x === xCoord && obj.y === yCoord) {
+          obj.attacked = true;
+          if (obj.shipName === undefined) {
+            this.missedShots.push({ x: xCoord, y: yCoord });
+          } else {
+            console.log(`${obj.shipName} was hit`);
+          }
+        }
+      });
     },
   };
 };
 
 module.exports = { gameboard };
 
-console.log(gameboard());
+let test = gameboard();
+test.receiveAttack(0, 5);
+console.log(test);
