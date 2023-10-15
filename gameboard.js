@@ -36,7 +36,26 @@ const gameboard = () => {
           if (obj.shipName === undefined) {
             this.missedShots.push({ x: xCoord, y: yCoord });
           } else {
-            console.log(`${obj.shipName} was hit`);
+            switch (obj.shipName) {
+              case "Carrier":
+                this.myFleet[0].hit();
+                break;
+              case "Battleship":
+                this.myFleet[1].hit();
+                break;
+              case "Destroyer":
+                this.myFleet[2].hit();
+                break;
+              case "Submarine":
+                this.myFleet[3].hit();
+                break;
+              case "Patrol Boat":
+                this.myFleet[4].hit();
+                break;
+
+              default:
+                break;
+            }
           }
         }
       });
