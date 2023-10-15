@@ -73,7 +73,18 @@ const gameboard = () => {
         });
       });
     },
+    checkSunkShips() {
+      let fleet = this.myFleet;
+      fleet.forEach((ship) => {
+        if (ship.sunk === true) {
+          this.sunkShips.push(ship.name);
+        }
+      });
+    },
   };
 };
 
 module.exports = { gameboard };
+
+const myBoard = gameboard();
+console.log(myBoard);
