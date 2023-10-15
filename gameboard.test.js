@@ -75,3 +75,13 @@ test("Invocation of ship in gameboard results in grid updating shipName property
   expect(submarineCounter).toStrictEqual(3);
   expect(patrolCounter).toStrictEqual(2);
 });
+
+test("receiveAttack method causes corresponding ship obj to invoke hit method", () => {
+  let exampleBoard = gameboard();
+  let myExampleCarrier = exampleBoard.myFleet[0];
+  //setting grid index (coords 0,0) manually for testing
+  exampleBoard.grid[0].shipName = "Carrier";
+  exampleBoard.receiveAttack(0, 0);
+
+  expect(myExampleCarrier.hits).toEqual(1);
+});
