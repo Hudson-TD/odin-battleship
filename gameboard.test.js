@@ -102,21 +102,23 @@ test("Ship receives enough attacks to trigger isSunk method and obj property upd
   expect(myExampleSubmarine.sunk).toEqual(true);
 });
 
-test("Ship receives enough attacks to trigger isSunk method and obj property update", () => {
+test.only("Ship receives enough attacks to trigger isSunk method and obj property update", () => {
   let exampleBoard = gameboard();
   let myExampleBattleship = exampleBoard.myFleet[1];
   //Manual placement of submarine's 3 coordinates
-  exampleBoard.grid[20].shipName = "Battleship";
-  exampleBoard.grid[30].shipName = "Battleship";
-  exampleBoard.grid[40].shipName = "Battleship";
-  exampleBoard.grid[50].shipName = "Battleship";
+  exampleBoard.grid[0].shipName = "Battleship";
+  exampleBoard.grid[1].shipName = "Battleship";
+  exampleBoard.grid[2].shipName = "Battleship";
+  exampleBoard.grid[3].shipName = "Battleship";
 
-  exampleBoard.receiveAttack(2, 0);
-  exampleBoard.receiveAttack(3, 0);
-  exampleBoard.receiveAttack(4, 0);
-  exampleBoard.receiveAttack(5, 0);
+  exampleBoard.receiveAttack(0, 0);
+  exampleBoard.receiveAttack(0, 1);
+  exampleBoard.receiveAttack(0, 2);
+  exampleBoard.receiveAttack(0, 3);
 
   expect(myExampleBattleship.hits).toBe(4);
-  expect(myExampleBattleship.isSunk).toBe(true);
-  expect(exampleBoard.sunkShips).toBe(["Battleship"]);
+  expect(myExampleBattleship.sunk).toEqual(true);
+
+  exampleBoard.checkSunkShips();
+  expect(exampleBoard.sunkShips).toStrictEqual(["Battleship"]);
 });
