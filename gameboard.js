@@ -19,6 +19,7 @@ const gameboard = () => {
   };
 
   return {
+    isGameOver: false,
     grid: generateGrid(),
     missedShots: [],
     sunkShips: [],
@@ -77,9 +78,15 @@ const gameboard = () => {
       let fleet = this.myFleet;
       fleet.forEach((ship) => {
         if (ship.sunk === true) {
-          this.sunkShips.push(ship.name);
+          this.sunkShips.push(String(ship.name));
         }
       });
+    },
+
+    checkGameOver() {
+      if (this.sunkShips.length === 5) {
+        this.isGameOver = true;
+      }
     },
   };
 };
@@ -87,4 +94,13 @@ const gameboard = () => {
 module.exports = { gameboard };
 
 const myBoard = gameboard();
+
+myBoard.sunkShips.push(
+  "Carrier",
+  "Battleship",
+  "Destroyer",
+  "Submarine",
+  "Patrol Boat"
+);
+
 console.log(myBoard);

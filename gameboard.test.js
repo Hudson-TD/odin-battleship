@@ -122,3 +122,19 @@ test.only("Ship receives enough attacks to trigger isSunk method and obj propert
   exampleBoard.checkSunkShips();
   expect(exampleBoard.sunkShips).toStrictEqual(["Battleship"]);
 });
+
+test.only("When sunkShips array contains all 5 ships, trigger game over", () => {
+  let exampleBoard = gameboard();
+
+  exampleBoard.sunkShips.push(
+    "Carrier",
+    "Battleship",
+    "Destroyer",
+    "Submarine",
+    "Patrol Boat"
+  );
+
+  exampleBoard.checkGameOver();
+
+  expect(exampleBoard.isGameOver).toEqual(true);
+});
