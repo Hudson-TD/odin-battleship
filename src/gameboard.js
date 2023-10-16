@@ -92,15 +92,3 @@ const gameboard = () => {
 };
 
 module.exports = { gameboard };
-
-const myBoard = gameboard();
-
-myBoard.sunkShips.push(
-  "Carrier",
-  "Battleship",
-  "Destroyer",
-  "Submarine",
-  "Patrol Boat"
-);
-
-console.log(myBoard);
