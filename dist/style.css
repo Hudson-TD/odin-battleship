@@ -1,0 +1,52 @@
+* {
+  cursor: crosshair;
+}
+
+.header-primary-text {
+  font-size: 3.5rem;
+  text-align: center;
+}
+
+.player-creation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 60vh;
+}
+
+.player-creation-form {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  border: 2px solid black;
+  background-color: floralwhite;
+  padding: 80px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.player-creation-form > p {
+  font-size: 1.5rem;
+}
+
+.player-creation-form > input {
+  width: 250px;
+  height: 35px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.player-creation-form > button {
+  width: 260px;
+  height: 40px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+  background-color: crimson;
+}
+
+.hidden {
+  display: none;
+}
