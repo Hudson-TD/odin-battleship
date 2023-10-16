@@ -7,4 +7,4 @@ const player = () => {
   };
 };
 
-let playerOne = player();
+module.exports = { player };
