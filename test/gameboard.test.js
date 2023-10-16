@@ -1,4 +1,4 @@
-const { gameboard } = require("./gameboard");
+const { gameboard } = require("../src/gameboard");
 
 test("Gameboard creation of 10 X 10 grid (array), length === 100", () => {
   let exampleBoard = gameboard();
@@ -102,7 +102,7 @@ test("Ship receives enough attacks to trigger isSunk method and obj property upd
   expect(myExampleSubmarine.sunk).toEqual(true);
 });
 
-test.only("Ship receives enough attacks to trigger isSunk method and obj property update", () => {
+test("Ship receives enough attacks to trigger isSunk method and obj property update", () => {
   let exampleBoard = gameboard();
   let myExampleBattleship = exampleBoard.myFleet[1];
   //Manual placement of submarine's 3 coordinates
@@ -123,7 +123,7 @@ test.only("Ship receives enough attacks to trigger isSunk method and obj propert
   expect(exampleBoard.sunkShips).toStrictEqual(["Battleship"]);
 });
 
-test.only("When sunkShips array contains all 5 ships, trigger game over", () => {
+test("When sunkShips array contains all 5 ships, trigger game over", () => {
   let exampleBoard = gameboard();
 
   exampleBoard.sunkShips.push(

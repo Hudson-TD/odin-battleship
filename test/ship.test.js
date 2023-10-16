@@ -1,4 +1,4 @@
-const { ship } = require("./ship");
+const { ship } = require("../src/ship");
 
 test("Ship factory returns all ship objects with properties name (string), length (int), hits (int), sunk (bool)", () => {
   let newCarrier = ship("Carrier");
