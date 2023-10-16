@@ -1,9 +1,10 @@
-const { gameboard } = require("./gameboard");
+const { gameboard } = require("./gameboard.js");
 
-const player = () => {
+const player = (name) => {
   return {
-    gameBoard: gameboard(),
-    isComputer: false,
+    name: name,
+    isTurn: false,
+    board: gameboard(),
   };
 };
 
