@@ -59,6 +59,16 @@ function generateGameboardEl(player) {
         cell.setAttribute("data-x", `${dataArray[dataIndex].x}`);
         cell.setAttribute("data-y", `${dataArray[dataIndex].y}`);
         cell.setAttribute("class", "gameboard-tile");
+        // Only add event listeners to enemy gameboard
+        if (player.name === "Computer") {
+          cell.addEventListener("click", (e) => {
+            console.log(
+              `${e.target.getAttribute("data-x")},${e.target.getAttribute(
+                "data-y"
+              )}`
+            );
+          });
+        }
       }
     }
     table.appendChild(row);
