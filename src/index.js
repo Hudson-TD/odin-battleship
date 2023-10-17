@@ -1,4 +1,7 @@
-const { renderPlayerCreationEl } = require("./domController");
+const {
+  renderPlayerCreationEl,
+  generateGameboardEl,
+} = require("./domController");
 const { player } = require("./player");
 
 const game = () => {
@@ -28,8 +31,8 @@ const game = () => {
     handleGameSetup: function () {
       this.playerOne = player(this.playerOneName);
       this.PlayerTwo = player(this.playerTwoName);
-      console.log(this.playerOne);
-      console.log(this.PlayerTwo);
+      generateGameboardEl(this.playerOne);
+      generateGameboardEl(this.PlayerTwo);
     },
   };
 };
