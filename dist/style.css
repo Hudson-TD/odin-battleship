@@ -2,6 +2,13 @@
   cursor: crosshair;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
 .header-primary-text {
   font-size: 3.5rem;
   text-align: center;
@@ -12,7 +19,7 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 60vh;
+  height: 500px;
 }
 
 .player-creation-form {
@@ -21,7 +28,7 @@
   width: 40vw;
   border: 2px solid black;
   background-color: floralwhite;
-  padding: 80px;
+  padding: 40px;
   align-items: center;
   justify-content: center;
   gap: 5px;
@@ -49,4 +56,23 @@
 
 .hidden {
   display: none;
+}
+
+.main-content-container {
+  display: flex;
+  gap: 15px;
+}
+
+.gameboard-table {
+  border: 2px solid purple;
+  width: 500px;
+  height: 500px;
+}
+
+.gameboard-row {
+  border: 2px solid red;
+}
+
+.gameboard-tile {
+  background-color: grey;
 }
