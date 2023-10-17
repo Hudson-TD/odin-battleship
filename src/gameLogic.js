@@ -1,6 +1,7 @@
 const {
   renderPlayerCreationEl,
   generateGameboardEl,
+  updateDisplay,
 } = require("./domController");
 const { player } = require("./player");
 
@@ -31,20 +32,21 @@ const game = () => {
     handleGameSetup: function () {
       this.playerOne = player(this.playerOneName);
       this.PlayerTwo = player(this.playerTwoName);
+      this.handlePlotting();
       generateGameboardEl(this.playerOne);
       generateGameboardEl(this.PlayerTwo);
-      this.handlePlotting();
       this.startAttackListening();
     },
     startAttackListening: function () {
-      const cells = document.querySelectorAll(".gameboard-tile");
+      const cells = document.querySelectorAll(".enemy-tile");
       cells.forEach((cell) => {
         cell.addEventListener("click", (e) => {
           e.preventDefault();
+          e.target.setAttribute("data-attacked", "true");
           let x = e.target.getAttribute("data-x");
           let y = e.target.getAttribute("data-y");
           this.PlayerTwo.board.receiveAttack(x, y);
-          console.log(this.PlayerTwo.board.grid);
+          updateDisplay();
         });
       });
     },

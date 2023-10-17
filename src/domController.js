@@ -58,6 +58,8 @@ function generateGameboardEl(player) {
         row.appendChild(cell);
         cell.setAttribute("data-x", `${dataArray[dataIndex].x}`);
         cell.setAttribute("data-y", `${dataArray[dataIndex].y}`);
+        cell.setAttribute("data-attacked", `${dataArray[dataIndex].attacked}`);
+        cell.setAttribute("data-ship", `${dataArray[dataIndex].shipName}`);
         cell.setAttribute("class", "gameboard-tile");
         // Only add event listeners to enemy gameboard
         if (player.name === "Computer") {
@@ -71,4 +73,21 @@ function generateGameboardEl(player) {
   mainContainer.appendChild(tableContainer);
 }
 
-module.exports = { renderPlayerCreationEl, generateGameboardEl };
+function updateDisplay() {
+  const allGridItems = document.querySelectorAll(".gameboard-tile");
+  allGridItems.forEach((tile) => {
+    let status = tile.getAttribute("data-attacked");
+    let name = tile.getAttribute("data-ship");
+    if (status === "true" && name === "undefined") {
+      tile.classList.remove("enemy-tile");
+      tile.classList.add("missed");
+    }
+
+    if (status === "true" && name !== "undefined") {
+      tile.classList.remove("enemy-tile");
+      tile.classList.add("hit");
+    }
+  });
+}
+
+module.exports = { renderPlayerCreationEl, generateGameboardEl, updateDisplay };

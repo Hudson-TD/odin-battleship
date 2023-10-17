@@ -77,3 +77,11 @@ body {
   background-color: rgb(255, 185, 120);
   outline: 3px solid black;
 }
+
+.missed {
+  background-color: aqua;
+}
+
+.hit {
+  background-color: red;
+}
