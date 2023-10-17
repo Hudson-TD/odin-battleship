@@ -61,13 +61,7 @@ function generateGameboardEl(player) {
         cell.setAttribute("class", "gameboard-tile");
         // Only add event listeners to enemy gameboard
         if (player.name === "Computer") {
-          cell.addEventListener("click", (e) => {
-            console.log(
-              `${e.target.getAttribute("data-x")},${e.target.getAttribute(
-                "data-y"
-              )}`
-            );
-          });
+          cell.classList.add("enemy-tile");
         }
       }
     }
