@@ -1,5 +1,5 @@
 function renderPlayerCreationEl() {
-  let body = document.querySelector("body");
+  const body = document.querySelector("body");
   let containerEl = document.createElement("div");
   containerEl.classList.add("player-creation-container");
 
@@ -36,4 +36,35 @@ function renderPlayerCreationEl() {
   formEl.appendChild(btnEl);
 }
 
-module.exports = { renderPlayerCreationEl };
+function generateGameboardEl(player) {
+  const dataArray = [...player.board.grid];
+  const mainContainer = document.querySelector(".main-content-container");
+  const tableContainer = document.createElement("div");
+  const table = document.createElement("table");
+  table.setAttribute("class", "gameboard-table");
+  const playerHeading = document.createElement("th");
+  playerHeading.innerText = `${player.name}'s Fleet`;
+  tableContainer.appendChild(playerHeading);
+
+  for (let i = 0; i < 10; i++) {
+    const row = document.createElement("tr");
+    row.setAttribute("class", "gameboard-row");
+
+    for (let j = 0; j < 10; j++) {
+      const dataIndex = i * 10 + j;
+
+      if (dataIndex < dataArray.length) {
+        const cell = document.createElement("td");
+        row.appendChild(cell);
+        cell.setAttribute("data-x", `${dataArray[dataIndex].x}`);
+        cell.setAttribute("data-y", `${dataArray[dataIndex].y}`);
+        cell.setAttribute("class", "gameboard-tile");
+      }
+    }
+    table.appendChild(row);
+  }
+  tableContainer.appendChild(table);
+  mainContainer.appendChild(tableContainer);
+}
+
+module.exports = { renderPlayerCreationEl, generateGameboardEl };
