@@ -30,9 +30,10 @@ const gameboard = () => {
       ship("Submarine"),
       ship("Patrol Boat"),
     ],
-    receiveAttack(xCoord, yCoord) {
+    receiveAttack: function (xCoord, yCoord) {
+      console.log(`Hit logged at ${xCoord},${yCoord}`);
       this.grid.forEach((obj) => {
-        if (obj.x === xCoord && obj.y === yCoord) {
+        if (obj.x == xCoord && obj.y == yCoord) {
           obj.attacked = true;
           if (obj.shipName === undefined) {
             this.missedShots.push({ x: xCoord, y: yCoord });
@@ -61,7 +62,7 @@ const gameboard = () => {
         }
       });
     },
-    plotFleet() {
+    plotFleet: function () {
       let fleet = this.myFleet;
       fleet.forEach((ship) => {
         let plots = ship.location;
@@ -74,7 +75,7 @@ const gameboard = () => {
         });
       });
     },
-    checkSunkShips() {
+    checkSunkShips: function () {
       let fleet = this.myFleet;
       fleet.forEach((ship) => {
         if (ship.sunk === true) {
@@ -83,7 +84,7 @@ const gameboard = () => {
       });
     },
 
-    checkGameOver() {
+    checkGameOver: function () {
       if (this.sunkShips.length === 5) {
         this.isGameOver = true;
       }
