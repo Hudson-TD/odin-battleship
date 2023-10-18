@@ -21,7 +21,7 @@ function renderPlayerCreationEl() {
   inputEl.setAttribute("min", "1");
   inputEl.required = true;
   inputEl.setAttribute("max", "25");
-  inputEl.setAttribute("placeholder", "Enter Player Name");
+  inputEl.setAttribute("placeholder", "Player Name");
 
   let btnEl = document.createElement("button");
   btnEl.setAttribute("id", "playerSubmit");
@@ -81,12 +81,10 @@ function handleHitsAndMisses() {
     let status = tile.getAttribute("data-attacked");
     let name = tile.getAttribute("data-ship");
     if (status === "true" && name === "undefined") {
-      tile.classList.remove("enemy-tile");
       tile.classList.add("missed");
     }
 
     if (status === "true" && name !== "undefined") {
-      tile.classList.remove("enemy-tile");
       tile.classList.add("hit");
     }
   });
