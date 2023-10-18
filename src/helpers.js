@@ -34,4 +34,16 @@ const determineSafePath = (direction, start) => {
   return path;
 };
 
-module.exports = { randomNumZeroToNine, randomDirection, determineSafePath };
+function removeMatchingObjects(arrOne, arrTwo) {
+  return arrOne.filter(
+    (objOne) =>
+      !arrTwo.some((objTwo) => objOne.x === objTwo.x && objOne.y === objTwo.y)
+  );
+}
+
+module.exports = {
+  randomNumZeroToNine,
+  randomDirection,
+  determineSafePath,
+  removeMatchingObjects,
+};
