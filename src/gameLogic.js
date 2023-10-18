@@ -5,6 +5,7 @@ const {
   handlePlayerGrid,
 } = require("./domController");
 const { player } = require("./player");
+const { computerLegalAttack } = require("./computerActions");
 
 const game = () => {
   return {
@@ -45,11 +46,26 @@ const game = () => {
         cell.addEventListener(
           "click",
           (e) => {
-            e.preventDefault();
             e.target.setAttribute("data-attacked", "true");
-            let x = e.target.getAttribute("data-x");
-            let y = e.target.getAttribute("data-y");
-            this.PlayerTwo.board.receiveAttack(x, y);
+            let enemyX = e.target.getAttribute("data-x");
+            let enemyY = e.target.getAttribute("data-y");
+            this.PlayerTwo.board.receiveAttack(enemyX, enemyY);
+            let computerAttack = computerLegalAttack(this.playerOne);
+            this.playerOne.board.receiveAttack(
+              computerAttack.x,
+              computerAttack.y
+            );
+            const playerOneTiles = document.querySelectorAll(".player-tile");
+            playerOneTiles.forEach((tile) => {
+              let playerX = tile.getAttribute("data-x");
+              let playerY = tile.getAttribute("data-y");
+              if (
+                playerX === String(computerAttack.x) &&
+                playerY === String(computerAttack.y)
+              ) {
+                tile.setAttribute("data-attacked", "true");
+              }
+            });
             handleHitsAndMisses();
           },
           { once: true }
