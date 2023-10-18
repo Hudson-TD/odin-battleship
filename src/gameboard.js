@@ -22,6 +22,7 @@ const gameboard = () => {
     isGameOver: false,
     grid: generateGrid(),
     missedShots: [],
+    hits: [],
     sunkShips: [],
     myFleet: [
       ship("Carrier"),
@@ -40,18 +41,23 @@ const gameboard = () => {
           } else {
             switch (obj.shipName) {
               case "Carrier":
+                this.hits.push({ x: xCoord, y: yCoord });
                 this.myFleet[0].hit();
                 break;
               case "Battleship":
+                this.hits.push({ x: xCoord, y: yCoord });
                 this.myFleet[1].hit();
                 break;
               case "Destroyer":
+                this.hits.push({ x: xCoord, y: yCoord });
                 this.myFleet[2].hit();
                 break;
               case "Submarine":
+                this.hits.push({ x: xCoord, y: yCoord });
                 this.myFleet[3].hit();
                 break;
               case "Patrol Boat":
+                this.hits.push({ x: xCoord, y: yCoord });
                 this.myFleet[4].hit();
                 break;
 
