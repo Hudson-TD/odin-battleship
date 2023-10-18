@@ -19,7 +19,7 @@ const gameboard = () => {
   };
 
   return {
-    isGameOver: false,
+    isLoser: false,
     grid: generateGrid(),
     missedShots: [],
     hits: [],
@@ -88,15 +88,14 @@ const gameboard = () => {
         if (ship.sunk === true && !this.sunkShips.includes(ship.name)) {
           this.sunkShips.push(String(ship.name));
         }
-        this.checkGameOver();
       });
+      this.toggleGameOver();
     },
 
-    checkGameOver: function () {
+    toggleGameOver: function () {
       let trigger = this.sunkShips.length;
       if (trigger == 5) {
-        this.isGameOver = true;
-        console.log("Game Over Triggered");
+        this.isLoser = true;
       }
     },
   };
