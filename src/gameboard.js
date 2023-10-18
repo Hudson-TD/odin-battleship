@@ -61,6 +61,7 @@ const gameboard = () => {
           }
         }
       });
+      this.checkSunkShips();
     },
     plotFleet: function () {
       let fleet = this.myFleet;
@@ -78,15 +79,18 @@ const gameboard = () => {
     checkSunkShips: function () {
       let fleet = this.myFleet;
       fleet.forEach((ship) => {
-        if (ship.sunk === true) {
+        if (ship.sunk === true && !this.sunkShips.includes(ship.name)) {
           this.sunkShips.push(String(ship.name));
         }
+        this.checkGameOver();
       });
     },
 
     checkGameOver: function () {
-      if (this.sunkShips.length === 5) {
+      let trigger = this.sunkShips.length;
+      if (trigger == 5) {
         this.isGameOver = true;
+        console.log("Game Over Triggered");
       }
     },
   };
