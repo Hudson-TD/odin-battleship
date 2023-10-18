@@ -42,14 +42,18 @@ const game = () => {
     startAttackListening: function () {
       const cells = document.querySelectorAll(".enemy-tile");
       cells.forEach((cell) => {
-        cell.addEventListener("click", (e) => {
-          e.preventDefault();
-          e.target.setAttribute("data-attacked", "true");
-          let x = e.target.getAttribute("data-x");
-          let y = e.target.getAttribute("data-y");
-          this.PlayerTwo.board.receiveAttack(x, y);
-          handleHitsAndMisses();
-        });
+        cell.addEventListener(
+          "click",
+          (e) => {
+            e.preventDefault();
+            e.target.setAttribute("data-attacked", "true");
+            let x = e.target.getAttribute("data-x");
+            let y = e.target.getAttribute("data-y");
+            this.PlayerTwo.board.receiveAttack(x, y);
+            handleHitsAndMisses();
+          },
+          { once: true }
+        );
       });
     },
     handlePlotting: function () {
