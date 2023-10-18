@@ -1,3 +1,5 @@
+const { game } = require("./gameLogic");
+
 function renderPlayerCreationEl() {
   const body = document.querySelector("body");
   let containerEl = document.createElement("div");
@@ -100,9 +102,71 @@ function handlePlayerGrid() {
   });
 }
 
+function checkGameOver(playerOne, playerTwo) {
+  let propOne = undefined;
+  let propTwo = undefined;
+  let propThree = undefined;
+  let propFour = undefined;
+
+  if (playerTwo.board.isLoser === true) {
+    propOne = "https://media.giphy.com/media/3o85xDZyvJPHLfgKXK/giphy.gif";
+    propTwo = "You Win";
+    propThree = "winner";
+    propFour = "Operation successful, enemy fleet has been eliminated!";
+    renderGameOverHTML(propOne, propTwo, propThree, propFour);
+  } else if (playerOne.board.isLoser === true) {
+    propOne = "https://media.giphy.com/media/3o6Ztn38eCMwTQIcs8/giphy.gif";
+    propTwo = "You Lose";
+    propThree = "loser";
+    propFour = "War....war never changes...";
+    renderGameOverHTML(propOne, propTwo, propThree, propFour);
+  }
+}
+
+function renderGameOverHTML(gifUrl, header, status, message) {
+  const mainContent = document.querySelector(".main-content-container");
+  mainContent.setAttribute("class", "hidden");
+
+  const gameOverContainer = document.createElement("div");
+  gameOverContainer.classList.add("game-over-container");
+
+  const gameOverHeader = document.createElement("h1");
+  gameOverHeader.classList.add("game-over-header");
+  gameOverHeader.setAttribute("id", `${status}`);
+  gameOverHeader.textContent = header;
+  gameOverContainer.appendChild(gameOverHeader);
+
+  const gameOverGif = document.createElement("img");
+  gameOverGif.classList.add("game-over-img");
+  gameOverGif.setAttribute("src", gifUrl);
+  gameOverContainer.appendChild(gameOverGif);
+
+  const gameOverMessage = document.createElement("p");
+  gameOverMessage.classList.add("game-over-message");
+  gameOverMessage.textContent = `${message}`;
+  gameOverContainer.appendChild(gameOverMessage);
+
+  const playAgainBtn = document.createElement("button");
+  playAgainBtn.setAttribute("id", "playAgainBtn");
+  playAgainBtn.innerText = "Play Again";
+  gameOverContainer.appendChild(playAgainBtn);
+
+  document.body.appendChild(gameOverContainer);
+  listenForPlayAgain();
+}
+
+function listenForPlayAgain() {
+  const playAgain = document.getElementById("playAgainBtn");
+  playAgain.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.location.reload();
+  });
+}
+
 module.exports = {
   renderPlayerCreationEl,
   generateGameboardEl,
   handleHitsAndMisses,
   handlePlayerGrid,
+  checkGameOver,
 };
