@@ -79,16 +79,17 @@ header {
   text-align: center;
 }
 
-.player-creation-form > button {
+button {
   width: 260px;
   height: 40px;
+  margin-bottom: 15px;
   font-weight: bold;
   font-size: 1.5rem;
   color: black;
   background-color: azure;
 }
 
-.player-creation-form > button:hover {
+button:hover {
   color: white;
   background-color: rgb(255, 0, 51);
 }
@@ -128,4 +129,48 @@ header {
 
 .hit {
   background-color: red;
+}
+
+.game-over-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./public/pexels-ron-lach-10526919.jpg");
+  background-size: cover;
+  padding: 15px;
+  gap: 15px;
+  width: 750px;
+  height: 500px;
+  border: 2px solid black;
+}
+
+.game-over-img {
+  border: 5px solid black;
+  margin-bottom: 20px;
+}
+
+.game-over-header {
+  font-family: "Black Ops One";
+  font-style: normal;
+  font-variant: normal;
+  margin-top: 25px;
+  letter-spacing: 8px;
+  -webkit-text-stroke: 1.5px black;
+  font-weight: 700;
+  line-height: 26.4px;
+  font-size: 5rem;
+}
+
+#winner {
+  color: green;
+}
+
+#loser {
+  color: crimson;
+}
+
+.game-over-img {
+  width: 250px;
+  height: 250px;
 }
