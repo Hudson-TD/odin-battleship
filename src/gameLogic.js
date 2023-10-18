@@ -1,7 +1,8 @@
 const {
   renderPlayerCreationEl,
   generateGameboardEl,
-  updateDisplay,
+  handleHitsAndMisses,
+  handlePlayerGrid,
 } = require("./domController");
 const { player } = require("./player");
 
@@ -35,6 +36,7 @@ const game = () => {
       this.handlePlotting();
       generateGameboardEl(this.playerOne);
       generateGameboardEl(this.PlayerTwo);
+      handlePlayerGrid();
       this.startAttackListening();
     },
     startAttackListening: function () {
@@ -46,7 +48,7 @@ const game = () => {
           let x = e.target.getAttribute("data-x");
           let y = e.target.getAttribute("data-y");
           this.PlayerTwo.board.receiveAttack(x, y);
-          updateDisplay();
+          handleHitsAndMisses();
         });
       });
     },
