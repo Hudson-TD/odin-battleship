@@ -3,6 +3,7 @@ const {
   generateGameboardEl,
   handleHitsAndMisses,
   handlePlayerGrid,
+  checkGameOver,
 } = require("./domController");
 const { player } = require("./player");
 const { computerLegalAttack } = require("./computerActions");
@@ -67,6 +68,7 @@ const game = () => {
               }
             });
             handleHitsAndMisses();
+            checkGameOver(this.playerOne, this.PlayerTwo);
           },
           { once: true }
         );
