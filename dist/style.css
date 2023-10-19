@@ -7,7 +7,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
   background: radial-gradient(
     1000px at 8.2% 13.8%,
     rgb(18, 35, 60) 0%,
@@ -27,7 +26,7 @@ button {
 
 header {
   width: 100vw;
-  height: 175px;
+  height: 160px;
   background-image: url("./public/Ocean.png");
   margin-bottom: 50px;
   border-bottom: 2px solid black;
@@ -53,6 +52,7 @@ header {
   justify-content: center;
   width: 100vw;
   height: 500px;
+  margin-top: 25px;
 }
 
 .player-creation-form {
@@ -173,4 +173,27 @@ button:hover {
 .game-over-img {
   width: 250px;
   height: 250px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: 75px;
+  gap: 25px;
+}
+
+.footer-link-icons {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 15px;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: white;
 }
