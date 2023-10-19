@@ -34,7 +34,6 @@ const gameboard = () => {
       ship("Patrol Boat", randomNum),
     ],
     receiveAttack: function (xCoord, yCoord) {
-      console.log(`Hit logged at ${xCoord},${yCoord}`);
       this.grid.forEach((obj) => {
         if (obj.x == xCoord && obj.y == yCoord) {
           obj.attacked = true;
