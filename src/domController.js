@@ -42,6 +42,7 @@ function generateGameboardEl(player) {
   const dataArray = [...player.board.grid];
   const mainContainer = document.querySelector(".main-content-container");
   const tableContainer = document.createElement("div");
+  tableContainer.setAttribute("class", "table-container");
   const table = document.createElement("table");
   table.setAttribute("class", "gameboard-table");
   const playerHeading = document.createElement("th");
@@ -83,10 +84,12 @@ function handleHitsAndMisses() {
     let status = tile.getAttribute("data-attacked");
     let name = tile.getAttribute("data-ship");
     if (status === "true" && name === "undefined") {
+      tile.classList.remove("enemy-tile");
       tile.classList.add("missed");
     }
 
     if (status === "true" && name !== "undefined") {
+      tile.classList.remove("enemy-tile");
       tile.classList.add("hit");
     }
   });
@@ -125,7 +128,8 @@ function checkGameOver(playerOne, playerTwo) {
 
 function renderGameOverHTML(gifUrl, header, status, message) {
   const mainContent = document.querySelector(".main-content-container");
-  mainContent.setAttribute("class", "hidden");
+  let tables = document.querySelectorAll(".table-container");
+  tables.forEach((table) => table.remove());
 
   const gameOverContainer = document.createElement("div");
   gameOverContainer.classList.add("game-over-container");
@@ -151,7 +155,7 @@ function renderGameOverHTML(gifUrl, header, status, message) {
   playAgainBtn.innerText = "Play Again";
   gameOverContainer.appendChild(playAgainBtn);
 
-  document.body.appendChild(gameOverContainer);
+  mainContent.appendChild(gameOverContainer);
   listenForPlayAgain();
 }
 
