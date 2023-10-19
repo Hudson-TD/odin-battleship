@@ -1,9 +1,12 @@
 # odin-battleship
+
 The Odin Project: Battleship
 
 # Description
 
 This application is my recreation and interpretation of the classic game Battleship. It demonstrates my ability to work with factory functions, create artificial intelligence via a computer opponent, and keep track of state all with vanilla Javascript. This project was a real challenge and I gained a lot of valuable knowledge, most of which pertains to how Javascript works "under the hood". Nearing the end I could tell my process for logical thinking and understanding the language was leagues better than when I started "The Odin Project" (TOP).
+
+![Battlship GIF visual](./dist/public/battleship-example.gif)
 
 # Goals
 
