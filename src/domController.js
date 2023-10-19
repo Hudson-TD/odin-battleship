@@ -1,7 +1,7 @@
 const { game } = require("./gameLogic");
 
 function renderPlayerCreationEl() {
-  const body = document.querySelector("body");
+  const mainContent = document.querySelector(".main-content-container");
   let containerEl = document.createElement("div");
   containerEl.classList.add("player-creation-container");
 
@@ -11,7 +11,7 @@ function renderPlayerCreationEl() {
   
   Instructions:
   
-  Using arial reconnaissance order fire on mapped coordinates. Hits will be recorded with an explosion marker, while misses will be indicated with a water marker.`;
+  Using arial reconnaissance, order fire on mapped coordinates. Hits will reflect red, while misses will be blue. We are counting on you.`;
 
   let formEl = document.createElement("form");
   formEl.setAttribute("name", "player-creation-form");
@@ -31,11 +31,11 @@ function renderPlayerCreationEl() {
   btnEl.setAttribute("for", "player-creation-form");
   btnEl.innerText = "Launch Fleet";
 
-  body.appendChild(containerEl);
   containerEl.appendChild(formEl);
   formEl.appendChild(overviewText);
   formEl.appendChild(inputEl);
   formEl.appendChild(btnEl);
+  mainContent.appendChild(containerEl);
 }
 
 function generateGameboardEl(player) {
