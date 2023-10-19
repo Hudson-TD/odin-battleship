@@ -55,13 +55,11 @@ const ship = (type, randomSet) => {
     location: randomPlacement(type, randomSet),
     hit: function () {
       this.hits += 1;
-      console.log("Hit detected!");
       this.isSunk();
     },
     isSunk: function () {
       if (this.hits === this.length) {
         this.sunk = true;
-        console.log(`${this.name} has been sunk`);
       }
     },
   };
