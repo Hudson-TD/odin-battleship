@@ -25,7 +25,6 @@ function computerLegalAttack(player) {
   let randomLegalAttack =
     legalAttacks[Math.floor(Math.random() * legalAttacks.length)];
 
-  console.log(`Random attack: ${randomLegalAttack}`);
   return randomLegalAttack;
 }
 
