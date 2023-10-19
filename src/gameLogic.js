@@ -27,6 +27,12 @@ const game = () => {
     startEventListening: function () {
       this.formSubmitBtn.addEventListener("click", (e) => {
         e.preventDefault();
+        if (this.formInput.value === "Computer") {
+          window.alert(
+            "Computer is a reserved name, please enter a new name :)"
+          );
+          return;
+        }
         this.playerOneName = this.formInput.value;
         this.formContainer.remove();
         this.handleGameSetup();
