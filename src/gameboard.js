@@ -1,6 +1,8 @@
 const { ship } = require("./ship");
+const { randomNumGen } = require("./helpers");
 
 const gameboard = () => {
+  const randomNum = randomNumGen();
   let gridArr = [];
 
   const generateGrid = () => {
@@ -25,11 +27,11 @@ const gameboard = () => {
     hits: [],
     sunkShips: [],
     myFleet: [
-      ship("Carrier"),
-      ship("Battleship"),
-      ship("Destroyer"),
-      ship("Submarine"),
-      ship("Patrol Boat"),
+      ship("Carrier", randomNum),
+      ship("Battleship", randomNum),
+      ship("Destroyer", randomNum),
+      ship("Submarine", randomNum),
+      ship("Patrol Boat", randomNum),
     ],
     receiveAttack: function (xCoord, yCoord) {
       console.log(`Hit logged at ${xCoord},${yCoord}`);

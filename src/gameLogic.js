@@ -28,7 +28,7 @@ const game = () => {
       this.formSubmitBtn.addEventListener("click", (e) => {
         e.preventDefault();
         this.playerOneName = this.formInput.value;
-        this.formContainer.classList.add("hidden");
+        this.formContainer.remove();
         this.handleGameSetup();
       });
     },
