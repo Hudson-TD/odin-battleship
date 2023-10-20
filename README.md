@@ -15,3 +15,5 @@ My goal with this project was not to rely on tutorials or peak at any similar pr
 # Link
 
 This game is hosted on GitHub pages and can be played by following the link below:
+
+https://hudson-td.github.io/odin-battleship/
